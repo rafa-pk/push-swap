@@ -6,7 +6,7 @@
 #    By: rvaz-da- <rvaz-da-@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 13:48:28 by rvaz-da-          #+#    #+#              #
-#    Updated: 2025/11/19 15:19:35 by rvaz-da-         ###   ########.fr        #
+#    Updated: 2025/11/19 20:49:38 by rvaz-da-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstmap.c ft_lstadd_front.c ft_lstiter.c ft_lstnew.c ft_lstclear.c \
-	ft_lstlast.c ft_lstsize.c ft_putchar.c ft_putstr.c ft_putnbr_base.c ft_putptr.c format_spec.c \
-	get_next_line.c get_next_line_utils.c \
+	ft_lstlast.c ft_lstsize.c ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr_base.c ft_putptr.c \
+	format_spec.c get_next_line.c get_next_line_utils.c 
 
 OBJ = $(SRC:.c=.o)
 

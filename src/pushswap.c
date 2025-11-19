@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   pushswap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/19 20:33:11 by rvaz-da-         ###   ########.fr       */
+/*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
+/*   Updated: 2025/11/19 21:12:09 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#include "pushswap.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include "libft/libft.h"
-
-typedef struct	s_node
+int	main(int ac, char *av[])
 {
-	struct s_node	*prev;
-	int				value;
-	struct s_node	*next;
-}	t_node;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
-typedef struct	s_stack
-{
-	int	length;
-	t_node	*head;
-	t_node	*tail;
-}	t_stack;
+	if (ac == 1)
+		return (1);
+	if (!arg_isvalid(av, ac))
+		return (write(2, "Error\n", 6), 1);
+	stack_a = make_stack(av, ac - 1);
 
-int	check_dups(char **av);
-int	arg_is_valid(char **av);
-
-#endif
+	return (0);
+}
