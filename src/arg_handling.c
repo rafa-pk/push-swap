@@ -6,13 +6,11 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/19 22:29:56 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:13:06 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-//TODO: si jai ac jai pas besoin de baliser une liste int avec ac
 
 int	*format_input(char **av, int ac)
 {
@@ -24,53 +22,59 @@ int	*format_input(char **av, int ac)
 	i = 1;
 	j = 0;
 	nb = 0;
-	args[ac] = -1;
+	args = ft_calloc(ac, sizeof(int));
+	if (!args)
+		return (NULL);
 	while (av[i])
 	{
+		j = 0;
+		if (av[i][0] == '\0')
+			return (free(args), NULL);
 		while (av[i][j])
 		{
-			if (!ft_digit(av[i][j])
-				return (NULL);
+			if (!ft_isdigit(av[i][j]))
+				return (free(args), NULL);
 			j++;
 		}
+		ft_printf("nb %d was a digit\n", i);
 		args[nb++] = ft_atoi(av[i++]);
 	}
-	return (args)
+	return (args);
 }
 
-int	check_dups(int *args,int ac)
+int	check_dups(int *args, int ix, int ac)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	j = 0;
-	while (av[i])
+	i = ix++;
+	if (ac == 2)
+		return (1);
+	while (i < ac)
 	{
-		j = i;
-		while (i < ac)
-		{
-			if (!ft_memcmp(args[i], args[j++] sizeof(int)))
-				return (0);
-		}
+		if (args[ix] == args[i])
+			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	arg_is_valid(char **av, ac)
+int	arg_is_valid(char **av, int ac)
 {
-	size_t	i;
+	int		i;
 	int		*args;
 
-	i = 1;
+	i = 0;
 	args = format_input(av, ac);
+	if (!args)
+		return (0);
 	while (i < ac)
 	{
-		if (args[i] > INT_MAX)
-			return (0);
-		if (!check_dups(args, ac))
-			return (0);
+		if (args[i] < INT_MIN || args[i] > INT_MAX)
+			return (free(args), 0);
+		ft_printf("nb %d within bounds\n", i);
+		if (!check_dups(args, i, ac))
+			return (free(args), 0);
+		ft_printf("no dups\n");
 		i++;
 	}
 	return (1);
@@ -80,29 +84,30 @@ t_stack	make_stack(char **av, int ac)
 {
 	t_stack	stack;
 	t_node	*node;
-	int		nb;
+	int		*args;
 	int		i;
 
-	i = 1;
+	i = 0;
 	stack = (t_stack){0};
-	while (i < argc)
+	args = format_input(av, ac);
+	if (!arg_is_valid(args, ac))
+		return (write(2, "Error\n", 6), NULL);
+	while (i < ac)
 	{
-		nb = ft_atoi(av[i]);	//TODO: add INT_MAX / INT_MIN check to atoi
-		node = ft_lst_new(nb);
+		node = ft_lst_new(args[i]);
 		if (!node)
-			return (NULL);
+			return (free(args), NULL);
 		ft_lstadd_back(&node, stack);
 		i++;
 	}
-	//stack.length = i; ?
-	return (stack);
+	return (free(args), stack);
 }
 */
 int	main(int ac, char *av[])
 {
 	if (ac == 1)
 		return (write(2, "Error\n", 6), 1);
-	ft_printf("Valid (1) or Invalid (0): %d\n", arg_is_valid(av));
+	ft_printf("Valid (1) or Invalid (0): %d\n", arg_is_valid(av, ac));
 	ft_printf("ac: %d\n", ac);
 	return (0);
 }

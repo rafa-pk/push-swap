@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/19 21:12:09 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/20 11:11:35 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	main(int ac, char *av[])
 
 	if (ac == 1)
 		return (1);
-	if (!arg_isvalid(av, ac))
-		return (write(2, "Error\n", 6), 1);
-	stack_a = make_stack(av, ac - 1);
-
+	stack_a = make_stack(av, ac);
+	if (!stack_a)
+		return (1);
 	return (0);
 }

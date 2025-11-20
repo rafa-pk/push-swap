@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/19 20:33:11 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:15:01 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct	s_stack
 	t_node	*tail;
 }	t_stack;
 
-int	check_dups(char **av);
-int	arg_is_valid(char **av);
+int	*format_input(char **av, int ac);
+int	check_dups(int *args, int i, int ac);
+int	arg_is_valid(char **av, int ac);
 
 #endif
