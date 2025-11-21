@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   list_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 12:59:30 by rvaz-da-         ###   ########.fr       */
+/*   Created: 2025/11/20 15:04:39 by rvaz-da-          #+#    #+#             */
+/*   Updated: 2025/11/21 12:51:47 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../pushswap.h"
 
-int	main(int ac, char *av[])
+void	ft_lstadd_back(t_stack *lst, t_node *new)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_stack	*current;
 
-	if (ac == 1)
-		return (1);
-	stack_a = make_stack(av, ac);
-	if (!stack_a)
-		return (1);
-	return (0);
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	current = *lst;
+	while (current->next != NULL)
+		current = current->next;
+	current->next = new;
 }
