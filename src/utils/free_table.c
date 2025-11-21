@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   free_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 19:09:57 by rvaz-da-         ###   ########.fr       */
+/*   Created: 2025/11/21 19:04:16 by rvaz-da-          #+#    #+#             */
+/*   Updated: 2025/11/21 22:09:30 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../../pushswap.h"
 
-int	main(int ac, char *av[])
+void	free_table(char **table)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	int	i;
 
-	if (ac == 1)
-		return (1);
-	stack_a = make_stack(av, ac);
-	if (!stack_a)
-		return (1);
-	return (0);
+	if (!table)
+		return ;
+	i = 0;
+	while (table[i])
+		free(table[i++]);
+	free(table);
 }

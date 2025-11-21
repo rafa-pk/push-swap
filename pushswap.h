@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 15:16:02 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/21 23:46:04 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <unistd.h>
 #include <limits.h>
 #include "libft/libft.h"
+
+typedef struct	s_arr
+{
+	int	*arr;
+	int	length;
+}	t_arr;
 
 typedef struct	s_node
 {
@@ -32,10 +38,15 @@ typedef struct	s_stack
 	t_node	*tail;
 }	t_stack;
 
-int		*argtype(char **av, int ac);
-int		*format_input(char **av, int ac);
-int		check_dups(int *args, int i, int ac);
-int		arg_is_valid(int *args, int ac);
+//UTILS
+void	free_table(char **table);
+int		tab_len(char **tab);
+
+//PARSING
+t_arr	argtype(char **av, int ac);
+t_arr	format_input(char **av, int ac);
+int		check_dups(t_arr args, int i);
+int		arg_is_valid(t_arr args);
 t_stack	*make_stack(char **av, int ac);
 
 #endif

@@ -6,45 +6,46 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 15:21:20 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 00:33:54 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	*format_input(char **av, int ac)
+t_arr	format_input(char **av, int ac)
 {
-	int	i;
-	int	j;
-	int	nb;
-	int	*args;
+	int		i;
+	int		j;
+	int		nb;
+	t_arr	args;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	nb = 0;
-	args = ft_calloc(ac, sizeof(int));
-	if (!args)
-		return (NULL);
+	args.arr = ft_calloc(ac, sizeof(int));
+	if (!args.arr)
+		return ((t_arr){NULL, 0});
 	while (av[i])
 	{
-		j = 0;
+		j = -1;
 		if (av[i][0] == '\0')
-			return (free(args), NULL);
-		while (av[i][j])
+			return (free(args.arr), (t_arr){NULL, 0});
+		while (av[i][++j])
 		{
-			if (!ft_isdigit(av[i][j]))
-				return (free(args), NULL);
-			j++;
+			if (!ft_isdigit(av[i][j]) && av[i][j] != ' '
+				&& !(j == 0 && av[i][j] == '-'))
+				return (free(args.arr), (t_arr){NULL, 0});
 		}
-		args[nb++] = ft_atoi(av[i++]);
+		args.arr[nb++] = ft_atoi(av[i++]);
 	}
+	args.length = nb;
 	return (args);
 }
 
-int	*argtype(char **av, int ac)
+t_arr	argtype(char **av, int ac)
 {
 	int		i;
-	int		*args;
+	t_arr	args;
 	char	**fake_av;
 
 	i = 0;
@@ -53,49 +54,50 @@ int	*argtype(char **av, int ac)
 	{
 		while (av[1][i])
 		{
-			if (!ft_strchr("0123456789 ", av[1][i]))
-				return (NULL);
+			if (!ft_strchr("0123456789 -", av[1][i]))
+				return ((t_arr){NULL, 0});
 			i++;
 		}
 		fake_av = ft_split(av[1], ' ');
 		if (!fake_av)
-			return (NULL);
-		args = format_input(fake_av, ac);
+			return ((t_arr){NULL, 0});
+		args = format_input(fake_av, tab_len(fake_av));
+		if (!args.arr || (args.length == 0))
+			return (free_table(fake_av), (t_arr){NULL, 0});
+		return (free_table(fake_av), args);
 	}
-	else
-		args = format_input(av, ac);
-	return (free(fake_av), args);
+	return (format_input(&av[1], ac));
 }
 
-int	check_dups(int *args, int ix, int ac)
+int	check_dups(t_arr args, int ix)
 {
 	int	i;
 
-	i = ix++;
-	if (ac == 2)
+	i = ix + 1;
+	if (args.length == 1)
 		return (1);
-	while (i < ac)
+	while (i < args.length)
 	{
-		if (args[ix] == args[i])
+		if (args.arr[ix] == args.arr[i])
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	arg_is_valid(int *args, int ac)	
+int	arg_is_valid(t_arr args)
 {
 	int		nb;
 
 	nb = 0;
-	if (!args)
+	if (!args.arr || (args.length == 0))
 		return (write(2, "Error\n", 6), 0);
-	while (nb < ac)
+	while (nb < args.length)
 	{
-		if (args[nb] < INT_MIN || args[nb] > INT_MAX)
-			return (free(args), 0);
-		if (!check_dups(args, nb, ac))
-			return (free(args), 0);
+		if (args.arr[nb] < INT_MIN || args.arr[nb] > INT_MAX)
+			return (free(args.arr), 0);
+		if (!check_dups(args, nb))
+			return (free(args.arr), 0);
 		nb++;
 	}
 	return (1);
@@ -110,8 +112,8 @@ t_stack	*make_stack(char **av, int ac)
 
 	i = 0;
 	stack = (t_stack){0};
-	args = check_argtype(av, ac);
-	if (!args)
+	args = argtype(av, ac);
+	if (!args.arr || args.length == 0)
 		return (write(2, "Error\n", 6), NULL);
 	if (!arg_is_valid(args, ac))
 		return (write(2, "Error\n", 6), NULL);
@@ -127,24 +129,26 @@ t_stack	*make_stack(char **av, int ac)
 	return (free(args), stack);
 }
 */
+
 int	main(int ac, char *av[])
 {
-	int	i;
-	int	*args;
+	int		i;
+	t_arr	args;
 
 	i = 0;
 	if (ac == 1)
 		return (1);
 	args = argtype(av, ac);
-	if (args == NULL)
+	if (!args.arr || (args.length == 0))
 		return (write(2, "Error\n", 6), 1);
-	if (!arg_is_valid(args, ac))
+	if (!arg_is_valid(args))
 		return (write(2, "Error\n", 6), 1);
-	ft_printf("stack_a: \n\n");
-	while (i < ac)
+	ft_printf("stack_a: \n");
+	while (i < args.length)
 	{
-		ft_printf("%d\n", args[i]);
+		ft_printf("%d\n", args.arr[i]);
 		i++;
 	}
+	free(args.arr);
 	return (0);
 }
