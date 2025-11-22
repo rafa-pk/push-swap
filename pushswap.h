@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 23:46:04 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 12:14:32 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct	s_arr
 {
-	int	*arr;
-	int	length;
+	int		*arr;
+	int		length;
 }	t_arr;
 
 typedef struct	s_node

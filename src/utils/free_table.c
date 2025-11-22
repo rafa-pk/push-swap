@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:04:16 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/21 22:09:30 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 00:44:40 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	free_table(char **table)
 		return ;
 	i = 0;
 	while (table[i])
-		free(table[i++]);
+	{
+		free(table[i]);
+		i++;
+	}
 	free(table);
 }

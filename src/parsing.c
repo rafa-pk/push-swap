@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 00:33:54 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 14:09:19 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ t_arr	argtype(char **av, int ac)
 			return (free_table(fake_av), (t_arr){NULL, 0});
 		return (free_table(fake_av), args);
 	}
-	return (format_input(&av[1], ac));
+	else
+		return (format_input(&av[1], ac - 1));
 }
 
 int	check_dups(t_arr args, int ix)

@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:53:06 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/10/15 22:57:41 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 14:07:14 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	buff_s = nmemb * size;
 	if (size != 0 && nmemb > (size_t)-1 / size)
-		return (0);
+		return (NULL);
 	cal = malloc(sizeof(unsigned char) * buff_s);
 	if (!cal)
 		return (NULL);
 	i = 0;
-	while (cal[i])
+	while (i < buff_s)
 	{
 		cal[i] = 0;
 		i++;
