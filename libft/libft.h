@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 20:54:17 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 00:28:51 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 14:28:28 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			format_spec(char fmt, va_list *ap);
 int			ft_putchar(char c);
 int			ft_putstr(char *str);
 int			ft_putnbr_base(long long nb, int base, char *new_base);
-int			ft_putptr(unsigned long long nb,  int flag);
+int			ft_putptr(unsigned long long nb, int flag);
 
 //GNL
 char		*get_next_line(int fd);

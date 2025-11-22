@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 14:09:19 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 14:27:50 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ t_arr	format_input(char **av, int ac)
 			return (free(args.arr), (t_arr){NULL, 0});
 		while (av[i][++j])
 		{
-			if (!ft_isdigit(av[i][j]) && av[i][j] != ' '
-				&& !(j == 0 && av[i][j] == '-'))
+			if (!ft_isvalid(av[i][j], j))
 				return (free(args.arr), (t_arr){NULL, 0});
 		}
 		args.arr[nb++] = ft_atoi(av[i++]);
