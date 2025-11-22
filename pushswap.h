@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 14:30:32 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:37:43 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ typedef struct s_stack
 	t_node	*head;
 	t_node	*tail;
 }	t_stack;
+
+//LIST_HANDLING
+t_node	*ft_lstnew(int content);
+void	ft_lstadd_back(t_stack *stack, t_node *node);
+void	ft_lstadd_front(t_stack *stack, t_node *node);
 
 //UTILS
 void	free_table(char **table);

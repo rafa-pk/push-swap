@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 14:27:50 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:00:22 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int	arg_is_valid(t_arr args)
 	}
 	return (1);
 }
-/*
-t_stack	*make_stack(char **av, int ac)
+
+t_stack	*make_stack(char **av, int ac)			//TODO: fix linked lists functions
 {
 	t_stack	stack;
 	t_node	*node;
@@ -111,44 +111,41 @@ t_stack	*make_stack(char **av, int ac)
 	int		i;
 
 	i = 0;
-	stack = (t_stack){0};
+	stack = (t_stack){0, NULL, NULL};
 	args = argtype(av, ac);
 	if (!args.arr || args.length == 0)
 		return (write(2, "Error\n", 6), NULL);
 	if (!arg_is_valid(args, ac))
 		return (write(2, "Error\n", 6), NULL);
-	while (i < ac)
+	while (i < args.length)
 	{
-		node = ft_lstnew(args[i]);
+		node = ft_lstnew(args.arr[i]);
 		if (!node)
 			return (free(args), NULL);
-		ft_lstadd_back(&node, stack);
+		ft_lstadd_back(stack, node);
 		i++;
 	}
-	stack.length = ac;
-	return (free(args), stack);
+	return (free(args.arr), stack);
 }
-*/
 
 int	main(int ac, char *av[])
 {
-	int		i;
-	t_arr	args;
+	t_node	*current;
+	t_stack	stack_a;
 
 	i = 0;
+	current = stack_a.head;
 	if (ac == 1)
 		return (1);
-	args = argtype(av, ac);
-	if (!args.arr || (args.length == 0))
-		return (write(2, "Error\n", 6), 1);
-	if (!arg_is_valid(args))
-		return (write(2, "Error\n", 6), 1);
+	stack_a = make_stack(av, ac);
+	if (!stack_a)
+		return (1);
 	ft_printf("stack_a: \n");
-	while (i < args.length)
+	while (current != NULL)
 	{
-		ft_printf("%d\n", args.arr[i]);
+		ft_printf("%d\n", current->value);
+		current = current->next;
 		i++;
 	}
-	free(args.arr);
 	return (0);
 }
