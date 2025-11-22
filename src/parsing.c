@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 16:00:22 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:34:43 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,22 +107,22 @@ t_stack	*make_stack(char **av, int ac)			//TODO: fix linked lists functions
 {
 	t_stack	stack;
 	t_node	*node;
-	int		*args;
+	t_arr	args;
 	int		i;
 
-	i = 0;
+	i =0;
 	stack = (t_stack){0, NULL, NULL};
 	args = argtype(av, ac);
 	if (!args.arr || args.length == 0)
 		return (write(2, "Error\n", 6), NULL);
-	if (!arg_is_valid(args, ac))
+	if (!arg_is_valid(args))
 		return (write(2, "Error\n", 6), NULL);
 	while (i < args.length)
 	{
 		node = ft_lstnew(args.arr[i]);
 		if (!node)
-			return (free(args), NULL);
-		ft_lstadd_back(stack, node);
+			return (free(args.arr), NULL);
+		ft_lstadd_back(&stack, node);
 		i++;
 	}
 	return (free(args.arr), stack);
@@ -131,10 +131,9 @@ t_stack	*make_stack(char **av, int ac)			//TODO: fix linked lists functions
 int	main(int ac, char *av[])
 {
 	t_node	*current;
-	t_stack	stack_a;
+	t_stack	*stack_a;
 
-	i = 0;
-	current = stack_a.head;
+	current = stack_a->head;
 	if (ac == 1)
 		return (1);
 	stack_a = make_stack(av, ac);
@@ -145,7 +144,6 @@ int	main(int ac, char *av[])
 	{
 		ft_printf("%d\n", current->value);
 		current = current->next;
-		i++;
 	}
 	return (0);
 }

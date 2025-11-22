@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:21:30 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 14:25:03 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:25:40 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_isvalid(char c, int ix)
 		return (1);
 	if (c == ' ')
 		return (1);
-	if (pos == 0 && c == '-')
+	if (ix == 0 && c == '-')
 		return (1);
 	return (0);
 }
