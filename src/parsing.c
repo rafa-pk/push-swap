@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/23 23:20:51 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/23 23:53:33 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_arr	argtype(char **av, int ac)
 			return ((t_arr){NULL, 0});
 		args = format_input(fake_av, tab_len(fake_av));
 		if (!args.arr || (args.length == 0))
-			return (free_table(fake_av), (t_arr){NULL, 0});
+			return (free_table(fake_av), free(args.arr), (t_arr){NULL, 0});
 		return (free_table(fake_av), args);
 	}
 	else
@@ -114,8 +114,7 @@ t_stack	make_stack(char **av, int ac)
 	stack = (t_stack){NULL, NULL, 0};
 	args = argtype(av, ac);
 	if (!args.arr || args.length == 0)
-		return (free(args.arr), write(2, "Error\n", 6),
-				(t_stack){NULL, NULL, 0});
+		return (write(2, "Error\n", 6), (t_stack){NULL, NULL, 0});
 	if (!arg_is_valid(args))
 		return (free(args.arr), write(2, "Error\n", 6),
 			(t_stack){NULL, NULL, 0});
