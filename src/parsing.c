@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/23 23:53:33 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/24 00:00:39 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	arg_is_valid(t_arr args)
 	while (nb < args.length)
 	{
 		if (args.arr[nb] < INT_MIN || args.arr[nb] > INT_MAX)
-			return (free(args.arr), 0);
+			return (0);
 		if (!check_dups(args, nb))
-			return (free(args.arr), 0);
+			return (0;
 		nb++;
 	}
 	return (1);
