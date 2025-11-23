@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:04:39 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 15:42:03 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:06:57 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ t_node	*ft_lstnew(int content)
 
 void	ft_lstadd_back(t_stack *stack, t_node *node)
 {
-	t_stack	*stack;
-
 	if (!stack || !node)
 		return ;
 	if (stack->head == NULL)
@@ -50,8 +48,6 @@ void	ft_lstadd_back(t_stack *stack, t_node *node)
 
 void	ft_lstadd_front(t_stack *stack, t_node *node)
 {
-	t_stack	*stack;
-
 	if (!stack || !node)
 		return ;
 	if (stack->head == NULL)
@@ -68,3 +64,16 @@ void	ft_lstadd_front(t_stack *stack, t_node *node)
 	stack->length++;
 }
 
+void	free_stack(t_stack *stack)
+{
+	t_node	*temp;
+
+	while (stack->head)
+	{
+		temp = stack->head->next;
+		free(stack->head);
+		stack->head = temp;
+	}
+	stack->tail = NULL;
+	stack->length = 0;
+}

@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 16:34:43 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:08:02 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_arr	argtype(char **av, int ac)
 	{
 		while (av[1][i])
 		{
-			if (!ft_strchr("0123456789 -", av[1][i]))
+			if (!ft_strchr("0123456789 -+", av[1][i]))
 				return ((t_arr){NULL, 0});
 			i++;
 		}
@@ -103,7 +103,7 @@ int	arg_is_valid(t_arr args)
 	return (1);
 }
 
-t_stack	*make_stack(char **av, int ac)			//TODO: fix linked lists functions
+t_stack	make_stack(char **av, int ac)
 {
 	t_stack	stack;
 	t_node	*node;
@@ -111,39 +111,42 @@ t_stack	*make_stack(char **av, int ac)			//TODO: fix linked lists functions
 	int		i;
 
 	i =0;
-	stack = (t_stack){0, NULL, NULL};
+	stack = (t_stack){NULL, NULL, 0};
 	args = argtype(av, ac);
 	if (!args.arr || args.length == 0)
-		return (write(2, "Error\n", 6), NULL);
+		return (write(2, "Error\n", 6), (t_stack){NULL, NULL, 0});
 	if (!arg_is_valid(args))
-		return (write(2, "Error\n", 6), NULL);
+		return (write(2, "Error\n", 6), (t_stack){NULL, NULL, 0});
 	while (i < args.length)
 	{
 		node = ft_lstnew(args.arr[i]);
 		if (!node)
-			return (free(args.arr), NULL);
+			return (free(args.arr), free_stack(&stack), (t_stack){NULL, NULL, 0});
 		ft_lstadd_back(&stack, node);
 		i++;
 	}
-	return (free(args.arr), stack);
+	free(args.arr);
+	return (stack);
 }
 
 int	main(int ac, char *av[])
 {
 	t_node	*current;
-	t_stack	*stack_a;
+	t_stack	stack_a;
 
-	current = stack_a->head;
+	stack_a = (t_stack){NULL, NULL, 0};
 	if (ac == 1)
 		return (1);
 	stack_a = make_stack(av, ac);
-	if (!stack_a)
+	if (!stack_a.head)
 		return (1);
+	current = stack_a.head;
 	ft_printf("stack_a: \n");
 	while (current != NULL)
 	{
 		ft_printf("%d\n", current->value);
 		current = current->next;
 	}
+	free_stack(&stack_a);
 	return (0);
 }
