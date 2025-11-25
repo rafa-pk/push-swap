@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 18:37:31 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/25 19:04:28 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ void	ft_push(t_stack *src, t_stack *dest, char flag)			//TODO: gerer stack->tail
 	{
 		node = src->head;
 		src->head = src->head->next;
-		node->prev = NULL;
-		node->next = dest->head;
-		if (dest->head != NULL)
-			dest->head->prev = node;
-		dest->head = node;
+		if (src->head)
+			src->head->tail = NULL;
+		else
+			src->tail = NULL;
+		src->length--;
+		if (!dest->head)
+		{
+			
+		}
 	}
 	dest->length++;
 	ft_printf("p%c\n", flag);
