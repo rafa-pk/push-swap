@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 13:41:39 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:20:17 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_stack
 t_node	*ft_lstnew(int content);
 void	ft_lstadd_back(t_stack *stck, t_node *node);
 void	ft_lstadd_front(t_stack *stk, t_node *node);
-void	ft_lstdelone(t_stack *stack, t_node *node);
 void	free_stack(t_stack *stack);
 
 //UTILS
@@ -52,8 +51,13 @@ int		tab_len(char **tab);
 int		ft_isvalid(char c, int ix);
 
 //MOVEMENTS
-void	ft_swap(t_stack *stack, char flag);
+void	ft_swap(t_stack *stack, char flag, int stack_nb);
 void	ft_push(t_stack *src, t_stack *dest, char flag);
+void	ft_ss(t_stack *stack_a, t_stack *stack_b);
+void	ft_rotate(t_stack *stack, char flag, int stack_nb);
+void	ft_rr(t_stack *stack_a, t_stack *stack_b);
+void	ft_reverse_rotate(t_stack *stack, char flag, int stack_nb);
+void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 
 //PARSING
 t_arr	argtype(char **av, int ac);

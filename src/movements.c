@@ -6,13 +6,13 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 13:42:04 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:37:31 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void	ft_swap(t_stack *stack, char flag)
+void	ft_swap(t_stack *stack, char flag, int stack_nb)
 {
 	t_node	*temp;
 
@@ -24,18 +24,57 @@ void	ft_swap(t_stack *stack, char flag)
 		stack->head->next = temp->next;
 		temp->next = stack->head;
 		stack->head = temp;
-		ft_printf("s%c\n", flag);
+		if (stack_nb == 1)
+			ft_printf("s%c\n", flag);
 	}
 }
 
-void	ft_push(t_stack *src, t_stack *dest, char flag)
+void	ft_push(t_stack *src, t_stack *dest, char flag)			//TODO: gerer stack->tail
 {
+	t_node	*node;
+
 	if (src->length == 0)
 		return ;
 	else
 	{
-		dest->head->value = src->head->value;
-		ft_lstdelone(&src, src->head);
+		node = src->head;
+		src->head = src->head->next;
+		node->prev = NULL;
+		node->next = dest->head;
+		if (dest->head != NULL)
+			dest->head->prev = node;
+		dest->head = node;
 	}
+	dest->length++;
 	ft_printf("p%c\n", flag);
+}
+
+void	ft_rotate(t_stack *stack, char flag, int stack_nb)
+{
+	t_node	*temp;
+
+	temp = stack->head;
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	temp->prev = stack->tail;
+	temp->next = NULL;
+	stack->tail->next = temp;
+	stack->tail = temp;
+	if (stack_nb == 1)
+		ft_printf("r%c", flag);
+}
+
+void	ft_reverse_rotate(t_stack *stack, char flag, int stack_nb)
+{
+	t_node	*temp;
+
+	temp = stack->tail;
+	stack->tail = stack->tail->prev;
+	stack->tail->next = NULL;
+	temp->prev = NULL;
+	temp->next = stack->head;
+	stack->head->prev = temp;
+	stack->head = temp;
+	if (stack_nb == 1)
+		ft_printf("rr%c\n", flag);
 }
