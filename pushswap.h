@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 18:20:17 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/26 00:25:27 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,7 @@ int		check_dups(t_arr args, int i);
 int		arg_is_valid(t_arr args);
 t_stack	make_stack(char **av, int ac);
 
+//SORTING
+int		is_sorted(t_stack *stack);
+void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 #endif
