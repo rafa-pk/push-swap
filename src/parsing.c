@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/24 00:00:39 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:33:39 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	arg_is_valid(t_arr args)
 		if (args.arr[nb] < INT_MIN || args.arr[nb] > INT_MAX)
 			return (0);
 		if (!check_dups(args, nb))
-			return (0;
+			return (0);
 		nb++;
 	}
 	return (1);
@@ -130,7 +130,7 @@ t_stack	make_stack(char **av, int ac)
 	free(args.arr);
 	return (stack);
 }
-
+/*
 int	main(int ac, char *av[])
 {
 	t_node	*current;
@@ -151,4 +151,4 @@ int	main(int ac, char *av[])
 	}
 	free_stack(&stack_a);
 	return (0);
-}
+}*/
