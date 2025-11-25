@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 19:04:28 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/11/25 22:26:48 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,12 @@ void	ft_push(t_stack *src, t_stack *dest, char flag)			//TODO: gerer stack->tail
 {
 	t_node	*node;
 
-	if (src->length == 0)
+	if (src->length < 2)
 		return ;
-	else
-	{
-		node = src->head;
-		src->head = src->head->next;
-		if (src->head)
-			src->head->tail = NULL;
-		else
-			src->tail = NULL;
-		src->length--;
-		if (!dest->head)
-		{
-			
-		}
-	}
-	dest->length++;
+	node = src->head;
+	src->head = src->head->next;
+	src->length--;
+	ft_lstadd_front(dest, node);
 	ft_printf("p%c\n", flag);
 }
 
@@ -57,6 +46,8 @@ void	ft_rotate(t_stack *stack, char flag, int stack_nb)
 {
 	t_node	*temp;
 
+	if (stack->length < 2)
+		return ;
 	temp = stack->head;
 	stack->head = stack->head->next;
 	stack->head->prev = NULL;
@@ -72,6 +63,8 @@ void	ft_reverse_rotate(t_stack *stack, char flag, int stack_nb)
 {
 	t_node	*temp;
 
+	if (stack->length < 2)
+		return ;
 	temp = stack->tail;
 	stack->tail = stack->tail->prev;
 	stack->tail->next = NULL;
