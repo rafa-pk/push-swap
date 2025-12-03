@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 22:26:48 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/03 14:55:21 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_swap(t_stack *stack, char flag, int stack_nb)
 	}
 }
 
-void	ft_push(t_stack *src, t_stack *dest, char flag)			//TODO: gerer stack->tail
+void	ft_push(t_stack *src, t_stack *dest, char flag)
 {
 	t_node	*node;
 
