@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:54:30 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/04 14:13:51 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:53:45 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
-/*
+
+//TODO: move calculate_costs here
+
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*cheapest;
-	int		index;
 	
 	if (stack_a->head->value > stack_a->head->next->value)
 		ft_swap(stack_a, 'a', 1);
@@ -38,14 +39,8 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a->length > 3)
 	{
 		calculate_costs(stack_a, stack_b);
-		cheapest = find_cheapest();
-		//rotate
+		cheapest = find_cheapest(stack_a);
+		rotate_cheapest(stack_a);
 		ft_push(stack_a, stack_b, 'b');
-		index++;
 	}
-
 }
-*/
-//parcourir stack
-//trouver element plus grand
-//c

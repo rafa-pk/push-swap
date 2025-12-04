@@ -6,7 +6,7 @@
 #    By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/24 21:51:25 by rvaz-da-          #+#    #+#              #
-#    Updated: 2025/11/25 23:40:26 by rvaz-da-         ###   ########.fr        #
+#    Updated: 2025/12/04 15:21:31 by rvaz-da-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror -g
 
 SRC = src/pushswap.c src/lists.c src/parsing.c src/parsing_utils.c src/movements.c \
-		src/movement_combs.c src/algo.c\
+		src/movement_combs.c src/algo.c src/algo_utils.c\
 
 OBJ = $(SRC:.c=.o)
 
