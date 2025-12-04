@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/03 16:34:46 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:03:15 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ t_stack	make_stack(char **av, int ac);
 //SORTING
 int		is_sorted(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
+void	calculate_costs(t_stack *stack_a, t_stack *stack_b);
 #endif

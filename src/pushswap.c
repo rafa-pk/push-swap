@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/03 16:38:45 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:02:22 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	main(int ac, char *av[])
 	ft_printf("stack b before: \n");
 	print_stack(&stack_b);
 	ft_printf("\n\n");
-	if (!is_sorted(&stack_a))
-		sort_stack(&stack_a, &stack_b);
+	if (is_sorted(&stack_a))
+		free_stack(&stack_a, &stack_b);
 	else
-		free_stack();
+		sort_stack();
 	ft_printf("\n\n");
 	printf("stack a after: \n");
 	print_stack(&stack_a);
