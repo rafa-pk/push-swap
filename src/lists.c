@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:04:39 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/25 14:27:39 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:31:00 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ void	ft_lstadd_front(t_stack *stack, t_node *node)
 		node->prev = NULL;
 		node->next = NULL;
 	}
-	node->next = stack->head;
-	stack->head->prev = node;
+	else
+	{
+		node->next = stack->head;
+		stack->head->prev = node;
+	}
 	stack->head = node;
 	node->prev = NULL;
 	stack->length++;

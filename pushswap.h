@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/04 10:03:15 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:58:22 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ int		arg_is_valid(t_arr args);
 t_stack	make_stack(char **av, int ac);
 
 //SORTING
+void	print_stack(t_stack *stack);
 int		is_sorted(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 void	calculate_costs(t_stack *stack_a, t_stack *stack_b);
+int		destination_moves(t_node *node_a, t_stack *stack_b);
+int		get_moves(t_node *node_a, t_node *node_b);
+t_node	*find_cheapest(t_stack *stack_a, int *index);
 #endif

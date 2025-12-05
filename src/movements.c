@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/03 14:55:21 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:32:06 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_push(t_stack *src, t_stack *dest, char flag)
 {
 	t_node	*node;
 
-	if (src->length < 2)
+	if (src->length < 1)
 		return ;
 	node = src->head;
 	src->head = src->head->next;
