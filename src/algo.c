@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:54:30 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/05 13:01:12 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:39:47 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ void	calculate_costs(t_stack *stack_a, t_stack *stack_b)
 	while (node)
 	{
 		if (index <= stack_a->length / 2)
+		{
 			node->cost = index;
+			node->rotation = 1;
+		}
 		else
+		{
 			node->cost = stack_a->length - index;
+			node->rotation = 2;
+		}
 		ft_printf("node[%d] cost in A: %d\n", index, node->cost);
 		node->cost += destination_moves(node, stack_b);
 		ft_printf("prout\n");

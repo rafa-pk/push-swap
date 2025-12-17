@@ -6,13 +6,13 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:55:52 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/05 11:43:03 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/08 14:15:02 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	get_moves(t_node *node_a, t_node *node_b)
+int	get_moves(t_node *node_a, t_stack *stack_b)
 {
 	int	index_b;
 
@@ -46,9 +46,7 @@ int	destination_moves(t_node *node_a, t_stack *stack_b)
 	{
 		if (node_a->value > node_b->value && node_a->value > node_b->next->value)
 			return (0);
-		if (node_a->value < node_b->value && node_a->value < node_b->next->value)
-			return (2);
 	}
 	ft_printf("marcel\n");
-	return (get_moves(node_a, node_b));
+	return (get_moves(node_a, stack_b));
 }
