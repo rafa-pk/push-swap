@@ -86,4 +86,9 @@ example implementation. This video really helped me understand sorting algorithm
 I then had finished the binge watching part of my research and also wanted to read about the matter. I had talked with some of my peers also doing the project and they
 told me about this "algorithm that is not really one" where you assign a move-cost to every node in the list and it had me thinking, so I went on with my research
 with that in mind and read a couple of articles:
-- 
+- "Push_swap: what is the most efficient way to sort given values using a limited set of instructions on two rotatable stacks?" on StackOverflow was the first thing
+I stumbled upon, it wasn't very useful but it was quite nice seeing someone write about this.
+- Jamie Dawson's "Push_Swap: The least amount of moves with two stacks" helped me understand the inner workings of the available moves, eventhough he used the splitting it 
+into chunks method, which I found quite unelegant.
+- Daniel Jelacik's "Push_swap: Sorting Without Traditional Algorithms", this was the article that made the project click for me. It approached in a very smart yet simple, 
+problem-solving way that I really enjoyed and made me understand why I should do each part of the process in a way and not another and ended up guiding me quite a lot.
