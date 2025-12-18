@@ -1,7 +1,6 @@
 *This project has been created as part of the 42 curriculum by rvaz-da-.*
 
 **Description**
-
 The pushswap project aims to create a program which sorts a given stack of integers 
 within the least possible amount of moves. By moves we mean movements 
 specified in the subject, hereby listed:
