@@ -72,8 +72,8 @@ and non-spaces will not be accepted. The only exceptions I let through were "+" 
 
 The first thing I did after having read the subject was to go online in search of project-overviews, in order to get a grasp of what I'll be doing. I
 generally like to look at code on github, eventhough it does not give me any keys and despite not always understanding it. I started by looking at radix
-implementations of old-peers from 42 Lisboa: hcarrasq and alencart. This enabled me to get a general idea of the project's size and the type of codebase
-I'd be dealing with. 
+implementations of old-peers from 42 Lisboa: hcarrasq and andcarva, which had done it a while ago. I looked through a bunch others, but these two were well 
+written and helped me the most. They enabled me to get a general idea of the project's size and the type of codebase I'd be dealing with. 
 
 After that I searched for Youtube videos and articles to understand how I would need to think about the subject and what my approach could be like.
 Some Youtube videos that stood out from that research were:
