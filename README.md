@@ -22,10 +22,9 @@ specified in the subject, hereby listed:
 The program's only output is the moves used to sort the stack.
 
 As you may have noticed, two stacks are present. This is because there are actually two
-of them: one of them contains all the integers to sort, the other one is used as a tool
-for the sorting algorithm, to stock data temporarily. By default, they are both empty. 
-Stack a will be the one containing the integers, and stack b will remain empty until useful
-in the sorting process.
+of them: one of them will contain all the integers to sort, the other one is used as a tool
+for the sorting algorithm — to stock data temporarily. By default, they are both empty. 
+Stack A will be the one containing the integers, and stack b will be the util.
 
 After some research I ended up using an algorithm which pushes two numbers to stack b and 
 then measures the least costly number to be added to stack b in the right position, to then 
@@ -38,7 +37,7 @@ lists and a way to use both stacks at the same time to minimise unnecessary move
 Some other algorithms I stumbled accross were the radix sort and algorithms that sort the stack by 
 breaking it down in smaller chunks, those seemed quite complex and I saw weren't even eligible for max
 project score.
-I first thought of using radix, but I later understood that its efficiently is much enhanced for much larger
+I first thought of using radix, but I later understood that its efficiency is much enhanced with much larger
 stacks, which is the reason for its uneligibility.
 
 
