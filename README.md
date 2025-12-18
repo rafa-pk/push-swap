@@ -1,6 +1,6 @@
 *This project has been created as part of the 42 curriculum by rvaz-da-.*
 
-#**Description**
+**Description**
 The pushswap project aims to create a program which sorts a given stack of integers 
 within the least possible amount of moves. By moves we mean movements 
 specified in the subject, hereby listed:
@@ -24,6 +24,6 @@ containing the integers, and stack b is empty.
 
 The program's only output is the moves used to sort the stack.
 My approach was to use an algorithm which
-#**Instructions**
+**Instructions**
 
-#**Resources**
+**Resources**
