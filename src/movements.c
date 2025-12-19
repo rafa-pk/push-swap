@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/05 11:32:06 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:13:33 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,14 @@ void	ft_push(t_stack *src, t_stack *dest, char flag)
 	if (src->length < 1)
 		return ;
 	node = src->head;
-	src->head = src->head->next;
+	src->head = node->next;
+	if (src->head)
+		src->head->prev = NULL;
+	else
+		src->tail = NULL;
 	src->length--;
+	node->next = NULL;
+	node->prev = NULL;
 	ft_lstadd_front(dest, node);
 	ft_printf("p%c\n", flag);
 }

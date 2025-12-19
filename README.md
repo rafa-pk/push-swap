@@ -34,7 +34,7 @@ processes.
 This is a not so "mathematical" algorithm, but more a way of thinking about the circularity of linked
 lists and a way to use both stacks at the same time to minimise unnecessary moves.
 
-Some other algorithms I stumbled accross were the radix sort and algorithms that sort the stack by 
+Some other algorithms I stumbled upon were the radix sort and algorithms that sort the stack by 
 breaking it down in smaller chunks, those seemed quite complex and I saw weren't even eligible for max
 project score.
 I first thought of using radix, but I later understood that its efficiency is much enhanced with much larger
@@ -62,7 +62,7 @@ and non-spaces will not be accepted. The only exceptions I let through were "+" 
 > Steps to run the program:
 > - make
 > - ./push_swap <argument(s)>
-> - make fclean
+> - make fclean (to clean up, run after being finished using the program)
 
 
 
@@ -91,3 +91,18 @@ I stumbled upon, it wasn't very useful but it was quite nice seeing someone writ
 into chunks method, which I found quite unelegant.
 - Daniel Jelacik's "Push_swap: Sorting Without Traditional Algorithms", this was the article that made the project click for me. It approached in a very smart yet simple, 
 problem-solving way that I really enjoyed and made me understand why I should do each part of the process in a way and not another and ended up guiding me quite a lot.
+
+### Now about AI use, the infamous debate:
+I generally try my best to not delegate work to AI, and this project was no exception. This means I actually tried my best to figure out the algorithm's logic and implementation
+by myself and through my research, as I actually wanted to think about possible solutions to arising issues and. Same goes for small, tedious tasks: I also coded them myself, I 
+want to have them quite engrained in me. And I generally don't trust AI-generated code enough to simply copy/paste it, so I generally rather just doing it myself in the first place.
+
+But so where did I use AI? Or did I even do so? You may ask...
+Well, yes. I did. 
+Broadly speaking, my use of AI was restricted to quick questions that were not worth spending time going through many web-pages and further-understanding concepts by being
+able to ask questions back-and-forth about it. I also used AI quite a few times for debugging, especially in enraging situations where the bug is nowhere to be found. Given that I am
+listing resources used, it would be a shame not to mention the LLMs that I talked about above:
+There were two of them, loyal servants:
+- Chat GPT, the most used one. Used it for more in-depth question&answer situations where I wanted him to be context-aware of the project.
+- Microsoft Copilot, mostly used it when working at school. This is because I do not like logging-in my accounts in the school computers and it allows guest use is allowed. 
+This means I always used it without logging-in, which prevented broad context-awareness, and enabled me to used it to ask very quick questions. 
