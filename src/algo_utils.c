@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:55:52 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/19 14:22:36 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:07:57 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	get_moves(t_node *node_a, t_stack *stack_b)
 		index_b++;
 		node_b = node_b->next;
 	}
+	if (index_b > stack_b->length / 2)
+		index_b = stack_b->length - index_b;
 	return (index_b);
 }
 
@@ -52,4 +54,29 @@ int	destination_moves(t_node *node_a, t_stack *stack_b)
 			return (0);
 	}
 	return (get_moves(node_a, stack_b));
+}
+
+void	rotations(t_stack *stack_a, char *flag, int index)
+{
+	int	i;
+
+	i = 0;
+	if (flag == "ra")
+	{
+		while (i < index)
+		{
+			if (flag == "ra")
+				ft_rotate(stack_a, 'a', 1);
+			i++;
+		}
+	}
+	else if (flag == "rra")
+	{
+		while (i < index)
+		{
+			if (flag == "rra")
+				ft_reverse_rotate(stack_a, 'a', 1);
+			i++;
+		}
+	}
 }

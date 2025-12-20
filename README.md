@@ -93,7 +93,7 @@ into chunks method, which I found quite unelegant.
 problem-solving way that I really enjoyed and made me understand why I should do each part of the process in a way and not another and ended up guiding me quite a lot.
 
 ### Now about AI use, the infamous debate:
-I generally try my best to not delegate work to AI, and this project was no exception. This means I actually tried my best to figure out the algorithm's logic and implementation
+I generally try my best not to delegate work to AI, and this project was no exception. This means I actually tried my best to figure out the algorithm's logic and implementation
 by myself and through my research, as I actually wanted to think about possible solutions to arising issues and. Same goes for small, tedious tasks: I also coded them myself, I 
 want to have them quite engrained in me. And I generally don't trust AI-generated code enough to simply copy/paste it, so I generally rather just doing it myself in the first place.
 

@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/08 14:15:30 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:12:01 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,6 @@ void	calculate_costs(t_stack *stack_a, t_stack *stack_b);
 int		destination_moves(t_node *node_a, t_stack *stack_b);
 int		get_moves(t_node *node_a, t_stack *stack_b);
 t_node	*find_cheapest(t_stack *stack_a, int *index);
+void	rotate_cheapest(t_stack *stack_a, t_node *cheapest, int index);
+void	rotations(t_stack *stack_a, char *flag, int index);
 #endif

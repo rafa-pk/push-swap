@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:54:30 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/19 16:16:12 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:10:29 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,53 +59,53 @@ t_node	*find_cheapest(t_stack *stack_a, int *index)
 	current = stack_a->head;
 	while (current)
 	{
-		if (current->cost > min->cost)
+		ft_printf("node %d cost: %d\n", i, current->cost);
+		if (current->cost <  min->cost)
+		{
 			min = current;
+			*index = i;
+		}
 		i++;
 		current = current->next;
 	}
 	return (min);
 }
-/*
+
 void	rotate_cheapest(t_stack *stack_a, t_node *cheapest, int index)
 {
-	t_node	*current;
-
-	current = stack_a->head;
-	while ()
-	{
-		
-	}
+	if (index == 0)
+		return ;
+	if (index > stack_a->length / 2)
+		rotations(stack_a, "ra" , index);
+	else
+		rotations(stack_a, "rra", index);
 }
-*/
+
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*cheapest;
 	t_node	*current;
 	int		index;
-	int		i;
+	//int		i;
 	
 	if (stack_a->head->value > stack_a->head->next->value)
 		ft_swap(stack_a, 'a', 1);
 	ft_push(stack_a, stack_b, 'b');
 	ft_push(stack_a, stack_b, 'b');
-	print_stack(stack_a);
-	print_stack(stack_b);
-	//while (stack_a->length > 3)
-	//{
+	while (stack_a->length > 3)
+	{
 		index = 0;
-		i = 0;
+		//i = 0;
 		current = stack_a->head;
 		calculate_costs(stack_a, stack_b);
-		while (current)
+		/*while (current)
 		{
 			ft_printf("cost of node [%d] (%d): %d\n", i, current->value, current->cost);
 			i++;
 			current = current->next;
-		}
+		}*/
 		cheapest = find_cheapest(stack_a, &index);
-		ft_printf("cheapest node is node[%d]: %d", index, cheapest->value);
-	//	rotate_cheapest(stack_a, cheapest, index);
-	//	ft_push(stack_a, stack_b, 'b');
-	//}
+		rotate_cheapest(stack_a, cheapest, index);
+		ft_push(stack_a, stack_b, 'b');
+	}
 }
