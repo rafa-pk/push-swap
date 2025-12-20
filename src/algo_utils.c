@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:55:52 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/20 19:07:57 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:02:13 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	rotations(t_stack *stack_a, char *flag, int index)
 	int	i;
 
 	i = 0;
-	if (flag == "ra")
+	if (ft_strlcmp("ra")
 	{
 		while (i < index)
 		{
@@ -78,5 +78,30 @@ void	rotations(t_stack *stack_a, char *flag, int index)
 				ft_reverse_rotate(stack_a, 'a', 1);
 			i++;
 		}
+	}
+}
+
+void	sort_remaining(t_stack *stack_a)
+{
+	t_node	*current;
+
+	current = stack_a->head;
+	while (current)
+	{
+		if (current->value > current->next->value)
+			ft_swap(stack_a, 'a', 1);
+		current = current->next;
+	}
+}
+
+void	push_to_b(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*current_b;
+
+	current_b = stack_b->head;
+	while (current_b)
+	{
+		ft_push(stack_a, stack_b, 1);
+		current_b = current_b->next;
 	}
 }

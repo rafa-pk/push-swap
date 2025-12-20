@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:58:05 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/05 11:05:15 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 20:53:53 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int	main(int ac, char *av[])
 	ft_printf("stack b after:\n");
 	print_stack(&stack_b);
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

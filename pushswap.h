@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/20 19:12:01 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/20 20:47:49 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_node
 	struct s_node	*prev;
 	int				value;
 	int				cost;
-	int				rotation;	//1 = rr; 2 = rrr; 0 = none
 	struct s_node	*next;
 }	t_node;
 
@@ -78,4 +77,6 @@ int		get_moves(t_node *node_a, t_stack *stack_b);
 t_node	*find_cheapest(t_stack *stack_a, int *index);
 void	rotate_cheapest(t_stack *stack_a, t_node *cheapest, int index);
 void	rotations(t_stack *stack_a, char *flag, int index);
+void	sort_remaining(t_stack *stack_a);
+void	push_to_b(t_stack *stack_a, t_stack *stack_b);
 #endif
