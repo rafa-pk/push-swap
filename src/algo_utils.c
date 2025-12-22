@@ -6,54 +6,54 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:55:52 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/20 21:02:13 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:51:10 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	get_moves(t_node *node_a, t_stack *stack_b)
+int	get_moves(t_node *node_src, t_stack *stack_dest)
 {
-	int		index_b;
-	t_node *node_b;
+	int		index_dest;
+	t_node	*node_dest;
 
-	index_b = 0;
-	node_b = stack_b->head;
-	while (node_b)
+	index_dest = 0;
+	node_dest = stack_dest->head;
+	while (node_dest)
 	{
-		if (node_a->value > node_b->value || node_b->next == NULL)
-			return (index_b);
-		index_b++;
-		node_b = node_b->next;
+		if (node_src->value > node_dest->value || node_dest->next == NULL)
+			return (index_dest);
+		index_dest++;
+		node_dest = node_dest->next;
 	}
-	if (index_b > stack_b->length / 2)
-		index_b = stack_b->length - index_b;
-	return (index_b);
+	if (index_dest > stack_dest->length / 2)
+		index_dest = stack_dest->length - index_dest;
+	return (index_dest);
 }
 
-int	destination_moves(t_node *node_a, t_stack *stack_b)
+int	destination_moves(t_node *node_src, t_stack *stack_dest)
 {
-	t_node	*node_b;
-	t_node	*node_b2;
-	int		index_b;
+	t_node	*node_dest;
+	t_node	*node_dest2;
+	int		index_dest;
 
-	index_b = 0;
-	if (!stack_b->head)
+	index_dest = 0;
+	if (!stack_dest->head)
 		return (0);
-	node_b = stack_b->head;
-	if (stack_b->head && !stack_b->head->next)
+	node_dest = stack_dest->head;
+	if (stack_dest->head && !stack_dest->head->next)
 	{
-		if (node_a->value > node_b->value)
+		if (node_src->value > node_dest->value)
 			return (0);
 		return (1);
 	}
-	if (stack_b->head && stack_b->head->next)
+	if (stack_dest->head && stack_dest->head->next)
 	{
-		node_b2 = node_b->next;
-		if (node_a->value > node_b->value && node_a->value > node_b2->value)
+		node_dest2 = node_dest->next;
+		if (node_src->value > node_dest->value && node_src->value > node_dest2->value)
 			return (0);
 	}
-	return (get_moves(node_a, stack_b));
+	return (get_moves(node_src, stack_dest));
 }
 
 void	rotations(t_stack *stack_a, char *flag, int index)
@@ -61,21 +61,19 @@ void	rotations(t_stack *stack_a, char *flag, int index)
 	int	i;
 
 	i = 0;
-	if (ft_strlcmp("ra")
+	if (!ft_strncmp(flag, "ra", 2))
 	{
 		while (i < index)
 		{
-			if (flag == "ra")
-				ft_rotate(stack_a, 'a', 1);
+			ft_rotate(stack_a, 'a', 1);
 			i++;
 		}
 	}
-	else if (flag == "rra")
+	else if (ft_strncmp(flag, "rra", 3))
 	{
 		while (i < index)
 		{
-			if (flag == "rra")
-				ft_reverse_rotate(stack_a, 'a', 1);
+			ft_reverse_rotate(stack_a, 'a', 1);
 			i++;
 		}
 	}
@@ -85,23 +83,26 @@ void	sort_remaining(t_stack *stack_a)
 {
 	t_node	*current;
 
-	current = stack_a->head;
-	while (current)
+	if (is_sorted(stack_a))
+		return ;
+	while (!is_sorted(stack_a))
 	{
+		current = stack_a->head;
 		if (current->value > current->next->value)
 			ft_swap(stack_a, 'a', 1);
-		current = current->next;
+		else if (stack_a->tail->value < current->value && 
+			stack_a->tail->value < current->next->value)
+			ft_reverse_rotate(stack_a, 'a', 1);
+		else
+			ft_rotate(stack_a, 'a', 1);
 	}
 }
 
-void	push_to_b(t_stack *stack_a, t_stack *stack_b)
+void	push_to_a(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*current_b;
-
-	current_b = stack_b->head;
-	while (current_b)
+	while (stack_b->length > 0)
 	{
-		ft_push(stack_a, stack_b, 1);
-		current_b = current_b->next;
+		//push to right place in a
+		ft_push(stack_b, stack_a, 'a')
 	}
 }

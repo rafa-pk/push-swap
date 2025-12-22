@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:24:07 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/19 14:13:33 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2025/12/22 12:39:04 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ void	ft_swap(t_stack *stack, char flag, int stack_nb)
 		return ;
 	else
 	{
-		temp = stack->head->next;
-		stack->head->next = temp->next;
-		temp->next = stack->head;
-		stack->head = temp;
+		temp = stack->head;
+		stack->head = temp->next;
+		temp->next = stack->head->next;
+		if (temp->next)
+			temp->next->prev = temp;
+		else
+			stack->tail = temp;
+		stack->head->prev = NULL;
+		stack->head->next = temp;
+		temp->prev = stack->head;
 		if (stack_nb == 1)
 			ft_printf("s%c\n", flag);
 	}
@@ -62,7 +68,7 @@ void	ft_rotate(t_stack *stack, char flag, int stack_nb)
 	stack->tail->next = temp;
 	stack->tail = temp;
 	if (stack_nb == 1)
-		ft_printf("r%c", flag);
+		ft_printf("r%c\n", flag);
 }
 
 void	ft_reverse_rotate(t_stack *stack, char flag, int stack_nb)
