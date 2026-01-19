@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:55:52 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2026/01/18 22:09:48 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2026/01/19 12:16:48 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,11 @@ void	node_cost_a(t_node *b_node, t_stack *stack_a)
 		b_node->a_cost = target_index;
 	else
 		b_node->a_cost = -(stack_a->length - target_index);
-	ft_printf("[%d] a cost: %d\n", b_node->value, b_node->a_cost);
+	//ft_printf("[%d] a cost: %d\n", b_node->value, b_node->a_cost);
 }
 
-void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b)
+void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b, t_node *cheapest_node)
 {
-	t_node	*cheapest_node;
-
-	cheapest_node = stack_b->head;
-	while (cheapest_node)
-	{
-		if (cheapest_node->cheapest)
-			break ;
-		cheapest_node = cheapest_node->next;
-	}
 	while (cheapest_node->a_cost > 0 && cheapest_node->b_cost > 0)
 	{
 		ft_rr(stack_a, stack_b);
@@ -133,42 +124,25 @@ void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	rotate_cheapest_node(t_stack *stack_b)
+void	rotate_cheapest_node(t_stack *stack_b, t_node *cheapest_node)
 {
-	t_node	*cheapest_node;
-
-	cheapest_node = stack_b->head;
-	while (cheapest_node)
-	{
-		if (cheapest_node->cheapest)
-			break ;
-		cheapest_node = cheapest_node->next;
-	}
 	while (cheapest_node->b_cost > 0)
 	{
 		ft_rotate(stack_b, 'b', 1);
-		b_cost--;
+		cheapest_node->b_cost--;
 	}
 	while (cheapest_node->b_cost < 0)
 	{
 		ft_reverse_rotate(stack_b, 'b', 1);
-		b_cost++;
+		cheapest_node->b_cost++;
 	}
 }
 
-void	rotate_target_node(t_stack *stack_a, t_stack *stack_b)	//TODO: figure it out
+void	rotate_target_node(t_stack *stack_a, t_stack *stack_b, t_node *cheapest_node)
 {
-	t_node	*cheapest_node;
 	t_node	*target_node;
 
-	cheapest_node = stack_b->head;
 	target_node = stack_a->head;
-	while (cheapest_node)
-	{
-		if (cheapest_node->cheapest)
-			break ;
-		cheapest_node = cheapest_node->next;
-	}
 	while (target_node)
 	{
 		if (target_node->value == cheapest_node->target->value)
@@ -178,10 +152,11 @@ void	rotate_target_node(t_stack *stack_a, t_stack *stack_b)	//TODO: figure it ou
 	while (cheapest_node->a_cost > 0)
 	{
 		ft_rotate(stack_a, 'a', 1);
-		a_cost--;
+		cheapest_node->a_cost--;
 	}
 	while (cheapest_node->a_cost < 0)
 	{
-		ft_reverse_rotate()
+		ft_reverse_rotate(stack_a, 'a', 1);
+		cheapest_node->a_cost++;
 	}
 }

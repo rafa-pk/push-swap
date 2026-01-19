@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2026/01/18 17:17:31 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2026/01/19 12:09:07 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_node
 	int				a_cost;
 	int				b_cost;
 	int				total_cost;
-	int				cheapest;
 	struct s_node	*target;
 	struct s_node	*next;
 }	t_node;
@@ -82,11 +81,12 @@ int		strictly_ascending(t_stack *stack_a);
 void	early_sorting(t_stack *stack_a);
 void	assign_target_nodes(t_stack *stack_b, t_stack *stack_a);
 void	find_target_node(t_node *node_b, t_stack *stack_a);
-void	calculate_costs(t_stack *stack_a, t_stack *stack_b, int *index);
+void	calculate_costs(t_stack *stack_a, t_stack *stack_b);
 void	node_cost_a(t_node *b_node, t_stack *stack_a);
-void	find_cheapest_node(t_stack *stack_a, t_stack *stack_b);
-void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b);
-void	rotate_cheapest_node(t_stack *stack_b);
-void	rotate_target_node(t_stack *stack_a, t_stack *stack_b);
+t_node	*find_cheapest_node(t_stack *stack_a, t_stack *stack_b);
+void	rotate_stacks_to_place(t_stack *stack_a, t_stack *stack_b, t_node *cheapest);
+void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b, t_node *cheapest);
+void	rotate_cheapest_node(t_stack *stack_b, t_node *cheapest);
+void	rotate_target_node(t_stack *stack_a, t_stack *stack_b, t_node *cheapest);
 
 #endif
