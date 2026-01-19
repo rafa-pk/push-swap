@@ -26,17 +26,18 @@ of them: one of them will contain all the integers to sort, the other one is use
 for the sorting algorithm — to stock data temporarily. By default, they are both empty. 
 Stack A will be the one containing the integers, and stack b will be the util.
 
-After some research I ended up using an algorithm which pushes two numbers to stack b and 
-then measures the least costly number to be added to stack b in the right position, to then 
-move everything (once ordered in b) back to stack a. For this I used doubly linked lists, which
-allowed me not only to properly familiarize myself with them, but also to facilitate some moving
-processes. 
+After some research I ended up using an algorithm coined by another 42 student, called the Turk Algorithm. 
+It works by pushing every number from stack a to stack b until stack a only has three integers, sorting those three integers
+and then assigning costs and target nodes to every node in b in order to push the least costly one back to a. Once this has all been done,
+the only thing left to do is to rotate the stack until it is linearly ordered.
+I say linearly ordered because the algorithm will consider a stack as sorted as long as the values are in ascending order in a circular way -
+if the head and tail are in the correct order in between thesmselves, its ok.
 This is a not so "mathematical" algorithm, but more a way of thinking about the circularity of linked
 lists and a way to use both stacks at the same time to minimise unnecessary moves.
 
 Some other algorithms I stumbled upon were the radix sort and algorithms that sort the stack by 
 breaking it down in smaller chunks, those seemed quite complex and I saw weren't even eligible for max
-project score.
+project score, eventhough they had predictable numbers of moves.
 I first thought of using radix, but I later understood that its efficiency is much enhanced with much larger
 stacks, which is the reason for its uneligibility.
 
@@ -46,7 +47,7 @@ stacks, which is the reason for its uneligibility.
 
 
 The program is compiled through the "make" command, which compiles all dependencies into a single executable
-called "push_swap". In order to run the program you can therefore execute it: ./push_swap, with the necessary
+called "push_swap". In order to run the program you can therefore execute it like so: ./push_swap, with the necessary
 arguments.
 
 Now a silent debate arises — the program takes the list to be sorted as an argument (stack a), but how can it be
@@ -91,6 +92,9 @@ I stumbled upon, it wasn't very useful but it was quite nice seeing someone writ
 into chunks method, which I found quite unelegant.
 - Daniel Jelacik's "Push_swap: Sorting Without Traditional Algorithms", this was the article that made the project click for me. It approached in a very smart yet simple, 
 problem-solving way that I really enjoyed and made me understand why I should do each part of the process in a way and not another and ended up guiding me quite a lot.
+- Yutong Deng's "Push_Swap Turk algorithm explained in 6 steps", my first implementation was quite similar to the Turk Algoritm, but wasn't really it and I couldn't make it work. This
+article was the second breakthrough in the process, it explained the theoritical steps of the Turk Algorithm in a very simple and understandable way, which allowed me to jump back into the code
+and complete the project.
 
 ### Now about AI use, the infamous debate:
 I generally try my best not to delegate work to AI, and this project was no exception. This means I actually tried my best to figure out the algorithm's logic and implementation
