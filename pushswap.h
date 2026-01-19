@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:36 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/12/20 23:11:06 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:17:31 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ typedef struct s_node
 {
 	struct s_node	*prev;
 	int				value;
-	int				cost;
+	int				a_cost;
+	int				b_cost;
+	int				total_cost;
+	int				cheapest;
+	struct s_node	*target;
 	struct s_node	*next;
 }	t_node;
 
@@ -50,6 +54,8 @@ void	print_table(t_stack *stack);
 void	free_table(char **table);
 int		tab_len(char **tab);
 int		ft_isvalid(char c, int ix);
+int		is_sorted(t_stack *stack);
+int		abs(int value);
 
 //MOVEMENTS
 void	ft_swap(t_stack *stack, char flag, int stack_nb);
@@ -69,14 +75,18 @@ t_stack	make_stack(char **av, int ac);
 
 //SORTING
 void	print_stack(t_stack *stack);
-int		is_sorted(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
-void	calculate_costs(t_stack *stack_src, t_stack *stack_dest);
-int		destination_moves(t_node *node_src, t_stack *stack_dest);
-int		get_moves(t_node *node_src, t_stack *stack_dest);
-t_node	*find_cheapest(t_stack *stack_src, int *index);
-void	rotate_cheapest(t_stack *stack_src, t_node *cheapest, int index);
-void	rotations(t_stack *stack_a, char *flag, int index);
-void	sort_remaining(t_stack *stack_a);
-void	push_to_a(t_stack *stack_a, t_stack *stack_b);
+void	sort_3(t_stack *stack);
+void	final_rotate(t_stack *stack_a);
+int		strictly_ascending(t_stack *stack_a);
+void	early_sorting(t_stack *stack_a);
+void	assign_target_nodes(t_stack *stack_b, t_stack *stack_a);
+void	find_target_node(t_node *node_b, t_stack *stack_a);
+void	calculate_costs(t_stack *stack_a, t_stack *stack_b, int *index);
+void	node_cost_a(t_node *b_node, t_stack *stack_a);
+void	find_cheapest_node(t_stack *stack_a, t_stack *stack_b);
+void	rotate_both_stacks(t_stack *stack_a, t_stack *stack_b);
+void	rotate_cheapest_node(t_stack *stack_b);
+void	rotate_target_node(t_stack *stack_a, t_stack *stack_b);
+
 #endif
