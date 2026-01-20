@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:27:29 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2025/11/22 00:26:59 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:09:28 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-long long	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	neg;
-	int	nb;
+	int			i;
+	int			neg;
+	long long	nb;
 
 	i = 0;
 	neg = 0;

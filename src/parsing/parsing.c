@@ -6,7 +6,7 @@
 /*   By: rvaz-da- <rvaz-da-@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:50:55 by rvaz-da-          #+#    #+#             */
-/*   Updated: 2026/01/19 15:20:44 by rvaz-da-         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:01:37 by rvaz-da-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_arr	format_input(char **av, int ac)
 	i = 0;
 	j = 0;
 	nb = 0;
-	args.arr = ft_calloc(ac, sizeof(int));
+	args.arr = ft_calloc(ac, sizeof(long int));
 	if (!args.arr)
 		return ((t_arr){NULL, 0});
 	while (av[i])
